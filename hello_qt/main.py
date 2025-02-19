@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel
+from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton, QLineEdit
 
 
 class MainWindow(QWidget):
@@ -6,14 +6,28 @@ class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.resize(800,600)
-        self.setWindowTitle("Hello Qt")
+        self.setWindowTitle("hello qt")
         
         self.__setup_ui()
         
+    def __on__submit(self):
+        nombre= self.nombre_input.text()
+        print(nombre)
+        self.nombre_input.clear()
     def __setup_ui(self):
         layout = QVBoxLayout()
         label = QLabel("Hola Mundo")
+        
+        self.nombre_input = QLineEdit()
+        self.nombre_input.returnPressed.connect(self.__on__submit)
+        
+        btn_1 = QPushButton("imprimir texto")
+        btn_1.clicked.connect(lambda: print('si tilin acepto!'))
+   
+        
         layout.addWidget(label)
+        layout.addWidget(self.nombre_input)
+        layout.addWidget(btn_1)
         
         self.setLayout(layout)
         
