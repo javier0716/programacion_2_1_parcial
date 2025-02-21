@@ -14,21 +14,26 @@ class MainWindow(QWidget):
         nombre= self.nombre_input.text()
         print(nombre)
         self.nombre_input.clear()
+        self.label.setText(nombre)
+        
+       
+        
+        
     def __setup_ui(self):
         layout = QVBoxLayout()
-        label = QLabel("Hola Mundo")
+        self.label = QLabel("Hola Mundo")
         
         self.nombre_input = QLineEdit()
         self.nombre_input.returnPressed.connect(self.__on__submit)
         
         btn_1 = QPushButton("imprimir texto")
-        btn_1.clicked.connect(lambda: print('si tilin acepto!'))
-   
+        btn_1.clicked.connect(self.__on__submit)
         
-        layout.addWidget(label)
+        
+        
+        layout.addWidget(self.label)
         layout.addWidget(self.nombre_input)
         layout.addWidget(btn_1)
-        
         self.setLayout(layout)
         
 if __name__ == "__main__":
