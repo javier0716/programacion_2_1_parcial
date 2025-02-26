@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton, QLineEdit
+from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton, QLineEdit, QSpinBox
 
 
 class MainWindow(QWidget):
@@ -16,6 +16,14 @@ class MainWindow(QWidget):
         self.nombre_input.clear()
         self.label.setText(nombre)
         
+        num = self.num_input.value()
+        print(num)
+        self.num_input.setValue(0)
+        
+        resultado = "\n".join(f"{i+1} {nombre}" for i in range(num))
+        print(resultado)    
+    
+        
        
         
         
@@ -29,11 +37,17 @@ class MainWindow(QWidget):
         btn_1 = QPushButton("imprimir texto")
         btn_1.clicked.connect(self.__on__submit)
         
+        self.num_input = QSpinBox()
+        
+        
         
         
         layout.addWidget(self.label)
         layout.addWidget(self.nombre_input)
+        layout.addWidget(self.num_input)
         layout.addWidget(btn_1)
+        
+        
         self.setLayout(layout)
         
 if __name__ == "__main__":
