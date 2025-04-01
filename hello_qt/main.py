@@ -20,9 +20,14 @@ class MainWindow(QWidget):
         print(num)
         self.num_input.setValue(0)
         
-        resultado = "\n".join(f"{i+1} {nombre}" for i in range(num))
-        print(resultado)    
-    
+        layout = self.layout()
+        
+        label =QLabel(nombre)
+        layout.addWidget(label)
+        
+        print(layout)
+        
+      
         
        
         
